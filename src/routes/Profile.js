@@ -3,7 +3,7 @@ import { authService } from "fbase";
 import { useHistory } from "react-router-dom";
 
 // eslint-disable-next-line
-export default ({ userObj }) => {
+export default ({ refreshUser, userObj }) => {
   const history = useHistory();
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   
@@ -25,6 +25,7 @@ export default ({ userObj }) => {
       await userObj.updateProfile({
         displayName: newDisplayName,
       });
+      refreshUser();
     }
   };
 
