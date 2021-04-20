@@ -53,7 +53,11 @@ const Home = ({ userObj }) => {
     reader.readAsDataURL(theFile);
   };
 
-  const onClearAttachment = () => setAttachment(null);
+  const onClearAttachment = () => {
+    setAttachment(null)
+    const imgTag = document.querySelector('#imgInput');
+    imgTag.value = null;
+  };
 
   return (
     <div>
@@ -65,7 +69,7 @@ const Home = ({ userObj }) => {
           placeholder="What's on your mind?"
           maxLength={120}
         />
-        <input type="file" accept="image/*" onChange={onFileChange} />
+        <input id="imgInput" type="file" accept="image/*" onChange={onFileChange} />
         <input type="submit" value="Nweet" />
         {attachment && (
           <div>
